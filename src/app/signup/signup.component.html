@@ -1,0 +1,43 @@
+<!-- The Modal  Sign Up-->
+<div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" id="myModalSignUp">
+  <div class="modal-dialog modal-lg" data-backdrop="static" data-keyboard="false">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Đăng ký <span style="color: #0056b3;">Shopp<span style="color: red;">ee</span></span></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="padding: 5%;">
+        <form [formGroup]="registerForm" (ngSubmit)="onSignUpSubmit()">
+          <div class="form-group">
+            <label for="inputRegUsername">Tên đăng nhập</label>
+            <input type="text" class="form-control" formControlName="reguserName" [ngClass]="{'is-invalid': !submitted && f.reguserName.error}" id="inputRegUsername"  placeholder="Điền tên đăng nhập" required>
+          </div>
+          <div class="form-group">
+            <label for="inputRegEmail">Email</label>
+            <input type="email" class="form-control"  formControlName="regemail" [ngClass]="{'is-invalid': !submitted && f.regemail.error}" id="inputRegEmail" aria-describedby="emailHelp" placeholder="Điền email" required>
+            <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không chia sẻ email với bất kỳ ai.</small>
+          </div>
+          <div class="form-group">
+            <label for="inputRegPassword">Mật khẩu</label>
+            <input type="password" class="form-control"  formControlName="regpassword" [ngClass]="{'is-invalid': submitted && f.reguserName.error}" id="inputRegPassword" placeholder="Điền mật khẩu" required>
+          </div>
+
+          <div class="form-group">
+            <label for="inputRePassword">Nhập lại Mật khẩu</label>
+            <input type="password" class="form-control"  formControlName="rePassword" [ngClass]="{'is-invalid': submitted && f.rePassword.error}" id="inputRePassword" placeholder="Nhập lại mật khẩu" required>
+          </div>
+          <div class="form-group">
+            <label for="inputRegFullName">Họ và tên</label>
+            <input type="text" class="form-control" formControlName="regfullName" [ngClass]="{'is-invalid': submitted && f.regfullName.error}" id="inputRegFullName"  placeholder="Điền họ và tên" required>
+          </div>
+          <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Đăng ký</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-left: 2%;">Hủy</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

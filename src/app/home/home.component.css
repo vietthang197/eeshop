@@ -1,0 +1,25 @@
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+  display: block;
+  height: auto;
+  max-width: 100% !important;
+  line-height: 1;
+  width: 100% !important;
+}
+
+#horizontal-style {
+  display: table;
+  width: 100%;
+}
+#horizontal-style li {
+  display: table-cell;
+}
+#horizontal-style a {
+  display: block;
+  text-align: center;
+}
+
+body {
+  background-color: red;
+}
+

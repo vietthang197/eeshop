@@ -1,0 +1,111 @@
+.body-product{
+  background-color: #f3f3f3;
+  margin-bottom: 5%;
+}
+.label-list-product {
+  font-size: 22px;
+  display: inline-block;
+  text-transform: uppercase;
+  padding-bottom: 15px;
+  background: transparent;
+  font-weight: 500;
+}
+
+.product{
+  border: 1px solid  #e1e1e1;
+  min-height: 400px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 5%;
+}
+
+.product:hover {
+  border: 1px solid  #f7544a;
+}
+
+.offer {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 99;
+  padding: 4px 8px 4px 8px;
+  font-size: 16px;
+  color: #fff;
+  background: #f7544a;
+  border-radius: 10px;
+}
+
+.thumbnail {
+  float: left;
+  position: relative;
+  width: 100%;
+  margin: 45px 0 5px 0;
+  padding: 0;
+  height: 230px;
+  border: none;
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+}
+
+.thumbnail a img {
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+}
+
+.product-name {
+  float: left;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333333;
+  display: block;
+}
+
+.price {
+  float: left;
+  width: 100%;
+  color: #ff1e2c;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.button_group {
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.button_group button {
+  margin: 0 3px 5px 3px;
+  background: #fff;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  padding: 9px 30px;
+}
+
+.button_group button:hover {
+  border: 1px solid #f7544a;
+  background: #f7544a;
+  color: #fff;
+}
+
+.list-product-name {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.body-product-all {
+  margin-bottom: 5%;
+}
+
