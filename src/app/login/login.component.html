@@ -1,5 +1,5 @@
 <!-- The Modal  Login-->
-<div class="modal fade bd-ex"ample-modal-lg data-backdrop="static" data-keyboard="false" id="myModalLogin">
+<div class="modal fade bd-ex"ample-modal-lg data-backdrop="static" data-keyboard="false" id="myModalLogin" [ngStyle]="{'display': showModal? 'block' : 'none'}">
   <div class="modal-dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-content">
 
@@ -14,17 +14,23 @@
         <div *ngIf="loginFailed" class="shopee-authen__error">Tên tài khoản của bạn hoặc Mật khẩu không đúng, vui lòng thử lại</div>
         <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
           <div class="form-group" required>
-            <label for="inputLoginUsername">Tên đăng nhập</label>
-            <input type="text" class="form-control" formControlName="logUsername" [ngClass]="{'is-invalid': !submitted && l.logUsername.error}" id="inputLoginUsername"  placeholder="Điền tên đăng nhập" required>
+            <label for="inputLoginUsername">Tên đăng nhập <span style="color: #dc3545;">*</span></label>
+            <input type="text" class="form-control" formControlName="logUsername" [ngClass]="{'is-invalid': !submitted && loginForm.controls['logUsername'].touched &&  !loginForm.controls['logUsername'].valid}" id="inputLoginUsername"  placeholder="Điền tên đăng nhập" required>
+            <div class="invalid-feedback">
+              Tên đăng nhập không được trống
+            </div>
           </div>
 
           <div class="form-group" required>
-            <label for="inputLoginPassword">Mật khẩu</label>
-            <input type="password" class="form-control is-invalid" formControlName="logPassword" [ngClass]="{'is-invalid': !loginForm.controls['logPassword'].valid }" id="inputLoginPassword" placeholder="Điền mật khẩu" required>
+            <label for="inputLoginPassword">Mật khẩu <span style="color:#dc3545;">*</span></label>
+            <input type="password" class="form-control is-invalid" formControlName="logPassword" [ngClass]="{'is-invalid': !submitted && loginForm.controls['logPassword'].touched &&  !loginForm.controls['logPassword'].valid}" id="inputLoginPassword" placeholder="Điền mật khẩu" required>
+            <div class="invalid-feedback">
+              Mật khẩu không được trống
+            </div>
           </div>
 
           <button type="submit" [disabled]="!loginForm.valid || submitted" class="btn btn-primary">Đăng nhập</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-left: 2%;">Hủy</button>
+          <button type="button" [disabled]="submitted" class="btn btn-danger" data-dismiss="modal" style="margin-left: 2%;">Hủy</button>
         </form>
       </div>
     </div>

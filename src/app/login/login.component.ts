@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AuthService} from '../auth.service';
-import {HttpErrorResponse, HttpResponse, HttpResponseBase} from '@angular/common/http';
+import {HttpErrorResponse} from '@angular/common/http';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loginFailed = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   setLoginFailed(vl: boolean) {
     this.loginFailed = vl;
   }
+
   onLoginSubmit() {
     this.submitted = true;
 
@@ -39,6 +41,11 @@ export class LoginComponent implements OnInit {
       console.log(res['authorization']);
       this.setSubmitted(true);
       this.setLoginFailed(false);
+      if (res['authorization'] !== null) {
+        this.authService.setLoginStatus(true);
+        this.router.navigate(['admin']);
+        console.log(this.authService.getIsLogedIn);
+      }
     }, (error: HttpErrorResponse) => {
       if (error.status === 401) {
         this.setSubmitted(false);

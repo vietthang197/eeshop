@@ -10,6 +10,14 @@ export class AuthService {
    headersLogin = new HttpHeaders({
     'Content-Type': 'application/json'
   });
+   private loginStatus = false;
+   setLoginStatus(vl: boolean) {
+     this.loginStatus = vl;
+   }
+
+  get getIsLogedIn() {
+    return this.loginStatus;
+  }
 
   constructor(private http: HttpClient) { }
 
