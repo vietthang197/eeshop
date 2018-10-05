@@ -1,0 +1,96 @@
+<app-admin-product-dashboard></app-admin-product-dashboard>
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active">
+        <a routerLink="/admin-product-manager">Sản phẩm</a>
+      </li>
+      <li class="breadcrumb-item">
+        Thêm sản phẩm
+      </li>
+      <li class="breadcrumb-item active">
+        <a routerLink="/create-note">Đơn hàng</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <a routerLink="/create-note">Thống kê</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <a routerLink="/add-user">Phân tích</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <a routerLink="/add-user">Quảng cáo</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <a routerLink="/add-user">Khuyến mại</a>
+      </li>
+    </ol>
+    <div class="card create-project">
+      <div class="card-header text-center">
+        <h3>Thêm sản phẩm</h3>
+      </div>
+      <div class="card-body">
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <a class="btn"><fa-icon icon="eye"></fa-icon><span> &nbsp; Xem trước</span></a>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label for="inputProductName" class="bmd-label-floating"><strong>Tên sản phẩm</strong></label>
+                <input type="text" class="form-control" id="inputProductName" required>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="selectCategory" class="bmd-label-floating"><strong>Loại sản phẩm</strong></label>
+                    <select class="form-control" id="selectCategory" required>
+                      <option selected="selected">1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="exampleInputDate" class="bmd-label-floating"><strong>Ngày nhập</strong></label>
+                    <input type="date" class="form-control" id="exampleInputDate">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="exampleInputPrice" class="bmd-label-floating"><strong>Giá tiền</strong></label>
+                    <input type="number" min="0" step="any" class="form-control" id="exampleInputPrice">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="exampleInputSale" class="bmd-label-floating"><strong>Giảm giá</strong></label>
+                    <input type="number" min="0" step="any" class="form-control" id="exampleInputSale">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleTextarea" class="bmd-label-floating"><strong>Mô tả </strong></label>
+                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputFile" class="bmd-label-floating">Ảnh sản phẩm</label>
+                <input type="file" class="form-control-file" id="exampleInputFile">
+                <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+              </div>
+              <button class="btn" mat-raised-button color="warn">Hủy</button>
+              <button class="btn" style="margin-left: 1%;" mat-raised-button color="primary">Thêm</button>
+            </form>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
