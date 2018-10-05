@@ -11,7 +11,7 @@
 
       <!-- Modal body -->
       <div class="modal-body" style="padding: 5%;">
-        <div *ngIf="loginFailed" class="shopee-authen__error">Tên tài khoản của bạn hoặc Mật khẩu không đúng, vui lòng thử lại</div>
+        <div *ngIf="loginFailed" class="shopee-authen__error">{{feedBackLogin}}</div>
         <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
           <div class="form-group" required>
             <label for="inputLoginUsername">Tên đăng nhập <span style="color: #dc3545;">*</span></label>
