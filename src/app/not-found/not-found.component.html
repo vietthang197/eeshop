@@ -1,3 +1,28 @@
-<p>
-  not-found works!
-</p>
+<div class="sp-404">
+  <div class="container">
+    <div class="sp-404if">
+      <p class="sp-404logo">
+        <a routerLink="/home">
+          <img class="imgLogo" [src]="pathLogo" alt="Shopee"/>
+        </a>
+      </p>
+      <p class="sp-404img">
+        <img [src]="pathImage" alt="404Image"/>
+      </p>
+      <h2 class="sp-404itit">
+        RẤT TIẾC, TRANG BẠN TÌM KIẾM KHÔNG TỒN TẠI!
+      </h2>
+      <div class="sp-404search">
+        <input type="text" placeholder="Bạn muốn tìm gì?"/>
+        <button type="button" class="sp-404-btn-search">
+          <span>
+            <img class="img-btn-search" [src]="pathBtnSearch"/>
+          </span>
+        </button>
+      </div>
+      <p class="sp-404-call">Gọi ngay <span>113</span> (miễn phí cuộc gọi) để được trợ giúp! </p>
+      <p class="sp-404-txt">Hoặc</p>
+      <a routerLink="/home" class="fs-4back">QUAY VỀ TRANG CHỦ</a>
+    </div>
+  </div>
+</div>

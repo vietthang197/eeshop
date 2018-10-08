@@ -56,3 +56,6 @@ body.sticky-footer .content-wrapper {
   min-height: calc(100vh - 56px);
   margin-top: 4.3rem;
 }
+.btn-submit {
+  margin-left: 1%;
+}

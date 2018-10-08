@@ -12,8 +12,15 @@ export class AdminProductCreateComponent implements OnInit {
   feedBackCreateProduct = '';
 
   constructor(private formBuilder: FormBuilder) {
+    const date = new Date();
     this.createProductForm = this.formBuilder.group({
-      name: [null, Validators.required]
+      name: [null, Validators.required],
+      categoryId: [null, Validators.required],
+      dateCreate: [date, Validators.required],
+      price: [0, Validators.required],
+      sale: [0, Validators.required],
+      description: [null, Validators.required],
+      img: [null, Validators.required]
     });
   }
 

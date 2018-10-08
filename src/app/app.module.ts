@@ -34,6 +34,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatNativeDateModule} from '@angular/material';
 import { MatInputModule} from '@angular/material';
 import { MatButtonModule, MatButtonToggleModule} from '@angular/material';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import {RoleGuardService as RoleGuard} from './role-guard.service';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 library.add(fas);
 
@@ -41,12 +44,19 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full', canLoad: [AuthGuard]},
   {path: 'home', component: HomeComponent },
   {path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
-  {path: 'admin-product-manager', component: AdminAllProductsComponent, canActivate: [AuthGuard]},
-  {path: 'admin-product-create', component: AdminProductCreateComponent, canActivate: [AuthGuard]},
+  {path: 'admin-product-manager', component: AdminAllProductsComponent, canActivate: [AuthGuard, RoleGuard], data: {
+      expectedRole: ['ADMIN']
+    }},
+  {path: 'admin-product-create', component: AdminProductCreateComponent, canActivate: [AuthGuard, RoleGuard], data: {
+      expectedRole: ['ADMIN']
+    }},
   {path: 'user', component: UserComponent, canActivate: [AuthGuard], children: [
       {path: 'profile', component: ProfileComponent}
     ]},
-  {path: '404', component: NotFoundComponent}
+  {path: 'login-page', component: LoginPageComponent},
+  {path: '404', component: NotFoundComponent},
+  {path: '403', component: UnauthorizedComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
@@ -66,7 +76,9 @@ const routes: Routes = [
    // AdminDashboardComponent,
     AdminAllProductsComponent,
    AdminProductDashboardComponent,
-   AdminProductCreateComponent
+   AdminProductCreateComponent,
+   UnauthorizedComponent,
+   LoginPageComponent
   ],
   imports: [
     BrowserModule,

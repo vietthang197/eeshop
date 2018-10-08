@@ -35,7 +35,7 @@
             <a class="btn"><fa-icon icon="eye"></fa-icon><span> &nbsp; Xem trước</span></a>
           </div>
           <div class="card-body">
-            <form>
+            <form [formGroup]="createProductForm">
               <div class="form-group">
                 <label for="inputProductName" class="bmd-label-floating"><strong>Tên sản phẩm</strong></label>
                 <input type="text" class="form-control" id="inputProductName" required>
@@ -84,7 +84,7 @@
                 <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
               </div>
               <button class="btn" mat-raised-button color="warn">Hủy</button>
-              <button class="btn" style="margin-left: 1%;" mat-raised-button color="primary">Thêm</button>
+              <button [disabled]="!createProductForm.valid || submitted" class="btn btn-submit" mat-raised-button color="primary">Thêm</button>
             </form>
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>

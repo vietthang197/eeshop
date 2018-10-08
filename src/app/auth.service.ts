@@ -12,6 +12,7 @@ export class AuthService {
    headersLogin = new HttpHeaders({
     'Content-Type': 'application/json'
   });
+private jwtDecode: JwtHelperService;
    private user: UserProfileLogedIn;
 
   get isLogedIn() {
@@ -21,6 +22,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this.user = new UserProfileLogedIn();
+    this.jwtDecode = new JwtHelperService();
   }
 
   login(username, password) {
@@ -29,10 +31,9 @@ export class AuthService {
   }
 
   setUserFromToken(user: UserProfileLogedIn) {
-    const jwtDecode = new JwtHelperService();
     const token = localStorage.getItem('token');
     try {
-      const data = jwtDecode.decodeToken(token);
+      const data = this.jwtDecode.decodeToken(token);
       user.isLogedIn = data === null ? false : data['isLogedIn'];
       user.authority = data === null ? null : data['sub'];
       user.userName = data === null ? null : data['userName'];
@@ -60,5 +61,12 @@ export class AuthService {
   }
   get userName() {
     return this.user.userName;
+  }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtDecode.isTokenExpired(token);
   }
 }
