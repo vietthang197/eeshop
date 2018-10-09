@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   userName = 'User';
   isAdmin = false;
   constructor(authService: AuthService) {
-    this.isLogedIn = authService.isLogedIn;
+    this.isLogedIn = authService.isLogedIn && authService.isTokenExpired();
     this.userName = authService.userName;
     this.isAdmin = authService.isAdmin;
   }

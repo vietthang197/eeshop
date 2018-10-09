@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http'
 import { HttpHeaders} from '@angular/common/http';
 import { UserProfileLogedIn} from './model/UserProfileLogedIn';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,38 @@ export class AuthService {
 
    headersLogin = new HttpHeaders({
     'Content-Type': 'application/json'
-  });
-private jwtDecode: JwtHelperService;
-   private user: UserProfileLogedIn;
+   });
+
+  private jwtDecode: JwtHelperService;
+  private user: UserProfileLogedIn;
+  public getToken(): any {
+     return localStorage.getItem('token');
+   }
+   setToken(token: string): void {
+     localStorage.setItem('token', token);
+   }
+    getTokenExpirationDate(token: string): Date {
+      const decoded = jwt_decode(token);
+      if (decoded.exp === undefined) {
+        return null;
+      }
+      const date = new Date(0);
+      date.setUTCSeconds(decoded.exp);
+      return date;
+    }
+    isTokenExpired(token?: string): boolean {
+      if (!token) {
+        token = this.getToken();
+      }
+      if (!token) {
+        return true;
+      }
+      const date = this.getTokenExpirationDate(token);
+      if (date === undefined) {
+        return false;
+      }
+      return !(date.valueOf() > new Date().valueOf());
+    }
 
   get isLogedIn() {
      this.setUserFromToken(this.user);
@@ -65,8 +95,10 @@ private jwtDecode: JwtHelperService;
 
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
-    // Check whether the token is expired and return
-    // true or false
     return !this.jwtDecode.isTokenExpired(token);
+  }
+
+  public get isAuthen() {
+    return !this.jwtDecode.isTokenExpired(localStorage.getItem('token'));
   }
 }
