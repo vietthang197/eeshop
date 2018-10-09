@@ -9,28 +9,32 @@
             </a>
           </p>
           <h5 class="card-title text-center">Hãy đăng nhập vào Shopee và bắt đầu mua sắm!</h5>
-          <form class="form-signin">
+          <div *ngIf="loginFailed" class="shopee-authen__error">{{feedBackLogin}}</div>
+          <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
             <div class="form-group form-input-group">
               <!--<label for="inputEmail">Tên đăng nhập</label>-->
-              <input type="email" id="username" class="form-control" placeholder=" Tên đăng nhập" required autofocus>
-
+              <input type="text" class="form-control" formControlName="logUsername" [ngClass]="{'is-invalid': !submitted && loginForm.controls['logUsername'].touched &&  !loginForm.controls['logUsername'].valid}" id="inputLoginUsername"  placeholder="Điền tên đăng nhập" required>
+              <div class="invalid-feedback">
+                Tên đăng nhập không được trống
+              </div>
             </div>
 
             <div class="form-group form-input-group">
               <!--<label for="inputPassword">Mật khẩu</label>-->
-              <input type="password" id="inputPassword" class="form-control" placeholder=" Mật khẩu" required>
-
+              <input type="password" type="password" class="form-control is-invalid" formControlName="logPassword" [ngClass]="{'is-invalid': !submitted && loginForm.controls['logPassword'].touched &&  !loginForm.controls['logPassword'].valid}" id="inputLoginPassword" placeholder="Điền mật khẩu" required>
+              <div class="invalid-feedback">
+                Mật khẩu không được trống
+              </div>
             </div>
 
             <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label class="custom-control-label" for="customCheck1">Nhớ mật khẩu</label>
+
             </div>
-            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng nhập</button>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" [disabled]="!loginForm.valid || submitted">Đăng nhập</button>
             <hr class="my-4">
-            <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit">Đăng ký</button>
-            <p class="forgot-password"><a  routerLink="/forgot-password">Quên mật khẩu ?</a></p>
           </form>
+          <button routerLink="/register-page" class="btn btn-lg btn-facebook btn-block text-uppercase form-signin form-input-group btn-register" type="submit">Đăng ký</button>
+          <p class="forgot-password"><a  routerLink="/forgot-password">Quên mật khẩu ?</a></p>
         </div>
       </div>
     </div>

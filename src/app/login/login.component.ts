@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
   loginFailed = false;
   feedBackLogin = '';
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
       this.setSubmitted(false);
       this.setLoginFailed(true);
       if (error.status === 401) {
-        this.feedBackLogin = 'Tên tài khoản của bạn hoặc Mật khẩu không đúng, vui lòng thử lại.';
+        this.feedBackLogin = 'Tên tài khoản  hoặc Mật khẩu không đúng, vui lòng thử lại.';
       } else {
         this.feedBackLogin = 'Kết nối đến server bị lỗi, vui lòng thử lại.';
       }

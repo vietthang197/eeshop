@@ -44,8 +44,8 @@
         <fa-icon icon="user"></fa-icon>  <span style="padding-left: 4px" *ngIf="!isLogedIn">Tài khoản</span> <span style="padding-left: 4px" *ngIf="isLogedIn">{{userName}}</span>
       </a>
       <div *ngIf="!isLogedIn" class="dropdown-menu" aria-labelledby="navbarDropdownAccount">
-        <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#myModalSignUp"> <fa-icon icon="user-plus"></fa-icon>  Đăng ký</a>
-        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModalLogin"> <fa-icon icon="sign-in-alt"></fa-icon>  Đăng nhập</a>
+        <a class="dropdown-item" routerLink="/register-page"  > <fa-icon icon="user-plus"></fa-icon>  Đăng ký</a>
+        <a class="dropdown-item" routerLink="/login-page" > <fa-icon icon="sign-in-alt"></fa-icon>  Đăng nhập</a>
       </div>
       <div *ngIf="isLogedIn" class="dropdown-menu" aria-labelledby="navbarDropdownAccount">
         <a class="dropdown-item" href="#"> <fa-icon icon="user-circle"></fa-icon>  Hồ sơ</a>

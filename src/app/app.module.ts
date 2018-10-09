@@ -37,6 +37,8 @@ import { MatButtonModule, MatButtonToggleModule} from '@angular/material';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import {RoleGuardService as RoleGuard} from './role-guard.service';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import {Register} from 'ts-node';
 
 library.add(fas);
 
@@ -54,6 +56,7 @@ const routes: Routes = [
       {path: 'profile', component: ProfileComponent}
     ]},
   {path: 'login-page', component: LoginPageComponent},
+  {path: 'register-page', component: RegisterPageComponent},
   {path: '404', component: NotFoundComponent},
   {path: '403', component: UnauthorizedComponent},
   {path: '**', redirectTo: '/404'}
@@ -78,7 +81,8 @@ const routes: Routes = [
    AdminProductDashboardComponent,
    AdminProductCreateComponent,
    UnauthorizedComponent,
-   LoginPageComponent
+   LoginPageComponent,
+   RegisterPageComponent
   ],
   imports: [
     BrowserModule,

@@ -95,10 +95,15 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
-    return !this.jwtDecode.isTokenExpired(token);
+    if (token === null) {
+      return false;
+    } else {
+      return !this.jwtDecode.isTokenExpired(token);
+    }
   }
-
-  public get isAuthen() {
-    return !this.jwtDecode.isTokenExpired(localStorage.getItem('token'));
+  public resetToken() {
+    if (this.isTokenExpired() === true) {
+      localStorage.clear();
+    }
   }
 }
