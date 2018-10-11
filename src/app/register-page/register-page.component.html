@@ -1,0 +1,102 @@
+<div class="container-fluid register">
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <a routerLink="/home">
+        <img [src]="logoRegister" alt="Logo shopee"/>
+      </a>
+      <h3>Shopee</h3>
+      <p>Mua sắm đồ điện tử trực tuyến dễ hơn bao giờ hết!</p>
+      <a class="router_login" routerLink="/login-page">Đăng nhập</a>
+    </div>
+    <div class="col-md-9 register-right">
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="register-heading">
+            <h3>Đăng ký thành viên để nhận ưu đãi khủng</h3>
+            <span *ngIf="registerFailed" class="shopee-authen__error">{{feedBackRegister}}</span>
+          </div>
+          <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit()">
+            <div class="row register-form">
+              <div class="col-md-6">
+                <div class="form-group form-input-group">
+                  <input  id="inputUsername" type="text" class="form-control" placeholder="Tên đăng nhập *" required
+                         formControlName="regUsername"  [ngClass]="{'is-invalid': !submitted && registerForm.controls['regUsername'].touched &&  !registerForm.controls['regUsername'].valid}"/>
+                  <div class="invalid-feedback">
+                    Tên đăng nhập dài 1- 15, không chứa ký tự lạ
+                  </div>
+                </div>
+                <div class="form-group form-input-group">
+                  <input  type="password" class="form-control" placeholder="Mật khẩu *"
+                         formControlName="regPassword" [ngClass]="{'is-invalid': !submitted && registerForm.controls['regPassword'].touched &&  !registerForm.controls['regPassword'].valid}"
+                         />
+                  <div class="invalid-feedback">
+                    Mật khẩu có ít nhất 5 ký tự và có in hoa, số
+                  </div>
+                </div>
+                <div class="form-group form-input-group">
+                  <input type="password" class="form-control" placeholder="Nhập lại mật khẩu *"
+                         formControlName="regConfirmPassword" [ngClass]="{'is-invalid': (!submitted && registerForm.controls['regConfirmPassword'].touched ) && registerForm.controls['regPassword'].value !== registerForm.controls['regConfirmPassword'].value}"/>
+                  <div  class="invalid-feedback">
+                    Mật khẩu không khớp
+                  </div>
+                </div>
+                <div class="form-group form-input-group">
+                  <input type="email" class="form-control"  placeholder="Email *"
+                         formControlName="regEmail" [ngClass]="{'is-invalid': !submitted && registerForm.controls['regEmail'].touched &&  !registerForm.controls['regEmail'].valid}"/>
+                  <div class="invalid-feedback">
+                    Email không hợp lệ
+                  </div>
+                </div>
+                <div class="form-group form-input-group">
+                  <mat-form-field class="form-group" color="#ff531d">
+                    <mat-label>Ngày sinh</mat-label>
+                    <input  matInput [matDatepicker]="picker1"
+                           formControlName="birthDay" [ngClass]="{'is-invalid': !submitted && registerForm.controls['birthDay'].touched &&  !registerForm.controls['birthDay'].valid}">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                  <div class="invalid-feedback">
+                    Vui lòng điền ngày sinh
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group form-input-group">
+                  <input type="text" class="form-control" placeholder="Địa chỉ 1 *"
+                         formControlName="regAddress1" [ngClass]="{'is-invalid': !submitted && registerForm.controls['regAddress1'].touched &&  !registerForm.controls['regAddress1'].valid}"/>
+                  <div class="invalid-feedback">
+                    Địa chỉ 1 không được trống
+                  </div>
+                </div>
+                <div class="form-group form-input-group">
+                  <input type="text"  class="form-control" placeholder="Địa chỉ 2 *"
+                         formControlName="regAddress2" [ngClass]="{'is-invalid': !submitted && registerForm.controls['regAddress2'].touched &&  !registerForm.controls['regAddress2'].valid}"/>
+                  <div class="invalid-feedback">
+                    Địa chỉ 2 không được trống
+                  </div>
+                </div>
+                <div class="form-group form-input-group">
+                  <input type="text" class="form-control"  placeholder="Họ và tên *"
+                         formControlName="regFullname" [ngClass]="{'is-invalid': !submitted && registerForm.controls['regFullname'].touched &&  !registerForm.controls['regFullname'].valid}"/>
+                  <div class="invalid-feedback">
+                    Họ và tên không được trống
+                  </div>
+                </div>
+                <div class="form-group form-input-group">
+                  <input type="text" class="form-control"  placeholder="Số điện thoại *"
+                         formControlName="regNumberphone" [ngClass]="{'is-invalid': !submitted && registerForm.controls['regNumberphone'].touched &&  !registerForm.controls['regNumberphone'].valid}"/>
+                  <div class="invalid-feedback">
+                    Số điện thoại không được để trống
+                  </div>
+                </div>
+                <button [disabled]="!registerForm.valid || submitted" class="btn btnRegister">Đăng ký ngay</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
