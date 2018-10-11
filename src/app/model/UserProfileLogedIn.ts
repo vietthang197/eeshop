@@ -1,5 +1,3 @@
-import { JwtHelperService} from '@auth0/angular-jwt';
-
 export class UserProfileLogedIn {
   private _isLogedIn: boolean;
   private _expireDate: string;

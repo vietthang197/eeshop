@@ -38,11 +38,14 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import {RoleGuardService as RoleGuard} from './role-guard.service';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ToastrModule } from 'ngx-toastr';
 import {Register} from 'ts-node';
+import { AdminAllUserComponent } from './admin/user-manager/admin-all-user/admin-all-user.component';
 
 library.add(fas);
 
-const routes: Routes = [
+  const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full', canLoad: [AuthGuard]},
   {path: 'home', component: HomeComponent },
   {path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
@@ -52,6 +55,9 @@ const routes: Routes = [
   {path: 'admin-product-create', component: AdminProductCreateComponent, canActivate: [AuthGuard, RoleGuard], data: {
       expectedRole: ['ADMIN']
     }},
+  {path: 'admin-all-user', component: AdminAllUserComponent, canActivate: [AuthGuard, RoleGuard], data: {
+      expectedRole: ['ADMIN']
+  }},
   {path: 'user', component: UserComponent, canActivate: [AuthGuard], children: [
       {path: 'profile', component: ProfileComponent}
     ]},
@@ -82,7 +88,8 @@ const routes: Routes = [
    AdminProductCreateComponent,
    UnauthorizedComponent,
    LoginPageComponent,
-   RegisterPageComponent
+   RegisterPageComponent,
+   AdminAllUserComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +108,9 @@ const routes: Routes = [
     MatNativeDateModule,
     MatInputModule,
     MatButtonModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSnackBarModule,
+    ToastrModule.forRoot()
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
