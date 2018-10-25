@@ -13,8 +13,6 @@ import { ProductdemoComponent } from './productdemo/productdemo.component';
 import { FooterComponent } from './footer/footer.component';
 import {AuthGuard} from './auth.guard';
 import { AuthService} from './auth.service';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { ModalModule} from 'ngx-bootstrap';
@@ -42,6 +40,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
 import {Register} from 'ts-node';
 import { AdminAllUserComponent } from './admin/user-manager/admin-all-user/admin-all-user.component';
+import { AdminCategoryProductManagerComponent } from './admin/admin-category-product-manager/admin-category-product-manager.component';
 
 library.add(fas);
 
@@ -58,6 +57,9 @@ library.add(fas);
   {path: 'admin-all-user', component: AdminAllUserComponent, canActivate: [AuthGuard, RoleGuard], data: {
       expectedRole: ['ADMIN']
   }},
+   {path: 'admin-category-product-manager', component: AdminCategoryProductManagerComponent, canActivate: [AuthGuard, RoleGuard], data: {
+      expectedRole: ['ADMIN']
+    }},
   {path: 'user', component: UserComponent, canActivate: [AuthGuard], children: [
       {path: 'profile', component: ProfileComponent}
     ]},
@@ -75,8 +77,6 @@ library.add(fas);
     HeaderComponent,
     ProductdemoComponent,
     FooterComponent,
-    LoginComponent,
-    SignupComponent,
     ProfileComponent,
     LogoutComponent,
     UserComponent,
@@ -89,7 +89,8 @@ library.add(fas);
    UnauthorizedComponent,
    LoginPageComponent,
    RegisterPageComponent,
-   AdminAllUserComponent
+   AdminAllUserComponent,
+   AdminCategoryProductManagerComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { HttpHeaders} from '@angular/common/http';
 import { UserProfileLogedIn} from './model/UserProfileLogedIn';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import * as jwt_decode from 'jwt-decode';
+import {AppSetting} from './model/AppSetting';
 
 @Injectable({
   providedIn: 'root'
@@ -57,7 +58,7 @@ export class AuthService {
 
   login(username, password) {
     const jsonEndCodeLogin = JSON.stringify({'username': username, 'password': password});
-    return this.http.post('http://localhost:8080/login', jsonEndCodeLogin, {headers: this.headersLogin});
+    return this.http.post(AppSetting.API_URL_LOGIN, jsonEndCodeLogin, {headers: this.headersLogin});
   }
 
   setUserFromToken(user: UserProfileLogedIn) {
